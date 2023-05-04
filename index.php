@@ -44,6 +44,26 @@ $hotels = [
 /* echo $hotels[0]['name'];
 var_dump($hotels); */
 
+
+$filteredHotels = $hotels;
+
+if (!empty($_GET['parkfilter'])) {
+    
+    
+    $option = ($_GET['parkfilter'] == 'true') ? true : false;
+
+    $filteredHotels = [];
+    foreach ($hotels as $hotel){
+
+        if (($hotel['parking'] === $option) ) {
+            $filteredHotels[] = $hotel;
+            
+        } 
+    }
+
+} else {
+    $filteredHotels = $hotels;
+}
 ?>
 
 
@@ -64,6 +84,17 @@ var_dump($hotels); */
     <div class="container-fluid">
         <h1 class="text-uppercase text-center fw-bold">hotel Advisor</h1>
     </div>
+    <div class="container d-flex">
+        <form action="<?php echo $_SERVER['PHP_SELF']?>" method="GET" class=" d-flex align-items-center" >
+        <p class="text-capitalize fw-bold m-0 text-nowrap me-2">parcking available:</p>
+        <select name="parkfilter" class="form-select w-50 me-3 fw-bold" >
+            <option value="">All</option>
+            <option value="true">YES</option>
+            <option value="false">NO</option>
+        </select>
+        <button type="submit" class="btn btn btn-outline-secondary">Search</button>
+        </form>
+    </div>
     <div class="mt-5">
         <table class="table table-warning table-striped">
             <thead>
@@ -76,7 +107,7 @@ var_dump($hotels); */
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($hotels as $hotel) { ?>
+                <?php foreach ($filteredHotels as $hotel) { ?>
                     <tr>
                         <th scope="row"><?php echo $hotel['name'] ?></th>
                         <td><?php echo $hotel['description'] ?></td>
