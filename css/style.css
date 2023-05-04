@@ -7,3 +7,8 @@
     border: 1px solid red;
 }
 
+body{
+    width: 100vw;
+    height: 100%;
+    background-image: url(../img/image_processing20200925-8333-12lr12v.jpg);
+}

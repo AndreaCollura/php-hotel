@@ -57,16 +57,22 @@ var_dump($hotels); */
     <link rel="stylesheet" href="./css/style.css">
     <title>index</title>
 </head>
+
+
 <body>
-    <div>
-        <table class="table">
+
+    <div class="container-fluid">
+        <h1 class="text-uppercase text-center fw-bold">hotel Advisor</h1>
+    </div>
+    <div class="mt-5">
+        <table class="table table-warning table-striped">
             <thead>
                 <tr class="text-uppercase">
                     <th scope="col">name</th>
                     <th scope="col">description</th>
-                    <th scope="col">parking</th>
-                    <th scope="col">vote</th>
-                    <th scope="col">distance to center</th>
+                    <th scope="col" class="text-center">parking</th>
+                    <th scope="col" class="text-center">vote</th>
+                    <th scope="col" class="text-center" >distance to center</th>
                 </tr>
             </thead>
             <tbody>
@@ -75,12 +81,12 @@ var_dump($hotels); */
                         <th scope="row"><?php echo $hotel['name'] ?></th>
                         <td><?php echo $hotel['description'] ?></td>
                         <?php if ($hotel['parking']) { ?>
-                            <td class="text-uppercase">yes</td>
+                            <td class="text-uppercase text-center">yes</td>
                         <?php } else { ?>
-                            <td class="text-uppercase">no</td>
+                            <td class="text-uppercase text-center">no</td>
                         <?php  } ?>
-                        <td><?php echo $hotel['vote'] ?></td>
-                        <td><?php echo $hotel['distance_to_center'] ?></td>
+                        <td class="text-center"><?php echo $hotel['vote'] ?></td>
+                        <td class="text-center"><?php echo $hotel['distance_to_center'] ?></td>
                     </tr>
                 <?php } ?>
             </tbody>
